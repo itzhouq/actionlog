@@ -19,7 +19,7 @@ import java.util.Date;
 
 /**
  * @Description: 测试 service 保存日志的方法
- * @Author: zhouquan
+ * @Author: itzhouq
  * @Date: 2020/7/12 19:52
  */
 @RunWith(SpringRunner.class)
@@ -47,8 +47,9 @@ public class SysLogServiceTest {
     public void test() throws IOException {
         OkHttpClient okHttpClient = new OkHttpClient();
         String url = "http://localhost:8899/demo/test";
+        String data = "data";
         //构建一个请求对象
-        Request request = new Request.Builder().url(url).build();
+        Request request = new Request.Builder().url(url).addHeader(data, "sdfghjkl").build();
         String method = request.method();
         URL url1 = request.url();
         HttpUrl httpUrl = request.httpUrl();
