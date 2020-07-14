@@ -12,7 +12,8 @@
         property*,plugin*,commentGenerator?,jdbcConnection,javaTypeResolver?,
         javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table+
     -->
-    <context id="myContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    <!-- MyBatis3Simple生成的主要是简单的CRUD，而MyBatis3生成的是复杂一些的动态where语句-->
+    <context id="myContext" targetRuntime="MyBatis3" defaultModelType="flat">
 
         <!-- 这个插件给生成的Java模型对象增加了equals和hashCode方法 -->
         <!--<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>-->
@@ -20,9 +21,9 @@
         <!-- 注释 -->
         <commentGenerator>
             <!-- 是否不生成注释 -->
-<!--            <property name="suppressAllComments" value="false"/>-->
+            <property name="suppressAllComments" value="true"/>
             <!-- 不希望生成的注释中包含时间戳 -->
-            <property name="suppressDate" value="true"/>
+<!--            <property name="suppressDate" value="true"/>-->
             <!-- 添加 db 表中字段的注释，只有suppressAllComments为false时才生效-->
 <!--            <property name="addRemarkComments" value="true"/>-->
         </commentGenerator>
@@ -82,13 +83,19 @@
              domainObjectName 是要生成的实体类名(可以不指定，默认按帕斯卡命名法将表名转换成类名)
              enableXXXByExample 默认为 true， 为 true 会生成一个对应Example帮助类，帮助你进行条件查询，不想要可以设为false
              -->
-        <table schema="" tableName="t_user" domainObjectName="User"
-               enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false" selectByExampleQueryId="false">
-            <!--是否使用实际列名,默认为false-->
-            <!--<property name="useActualColumnNames" value="false" />-->
-        </table>
-        <table schema="" tableName="t_sys_log" domainObjectName="SysLog"
+<!--        <table schema="" tableName="t_user" domainObjectName="User"-->
+<!--               enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               enableUpdateByExample="false" selectByExampleQueryId="false">-->
+<!--            &lt;!&ndash;是否使用实际列名,默认为false&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="useActualColumnNames" value="false" />&ndash;&gt;-->
+<!--        </table>-->
+<!--        <table schema="" tableName="t_sys_log" domainObjectName="SysLog"-->
+<!--               enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               enableUpdateByExample="false" selectByExampleQueryId="false">-->
+<!--            &lt;!&ndash;是否使用实际列名,默认为false&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="useActualColumnNames" value="false" />&ndash;&gt;-->
+<!--        </table>-->
+        <table schema="" tableName="t_user_operate_log" domainObjectName="UserOperationLog"
                enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false" selectByExampleQueryId="false">
             <!--是否使用实际列名,默认为false-->
